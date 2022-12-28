@@ -29,11 +29,16 @@ class GameController {
   }
 
   _sortNewWord() {
+    if (lastWords.length == GameConstants.words.length) {
+      lastWords.clear();
+    }
+
     String newWord = "";
     listLetter.clear();
 
     do {
-      newWord = GameConstants.words[Random().nextInt(121)];
+      newWord =
+          GameConstants.words[Random().nextInt(GameConstants.words.length)];
     } while (lastWords.where((e) => e == newWord).isNotEmpty);
 
     lastWords.add(newWord);
